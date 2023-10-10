@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mycss.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="demo">
+            <h2>1.基礎掛載</h2>
+            <p>{{text01}}</p>
+            <p>{{text02}}</p>
+        </div>
+        <div class="demo">
+            <h2>2.v-model綁定</h2>
+            <input type="text" class="form-control mb-2" v-model="mytitle01">
+            <!--載入資料的三種方式-->
+            <p>你的輸入:{{mytitle01}}</p>
+            <div v-text="mytitle01"></div>
+            <div v-html="mytitle01"></div>
+        </div>
+        <div class="demo">
+            <h2>3.v-bind</h2>
+            <img v-bind:src="imgSrc" v-bind:class="classw50">
+            <br><br>
+            <!--輸入圖片路徑，即刻顯示圖片-->
+            <input type="text" v-model="imgSrc2">
+            <br><br>
+            <img :src="imgSrc2" >
+        </div>
+        <div class="demo">
+            <h2>4.v-for (item)</h2>
+            <ul class="list-group">
+                <li class="list-group-item" v-for="item in list">
+                   {{item.product}} =>{{item.price}}
+                </li>
+              </ul>
+            <h2>v-for (item,key) 字典</h2>
+            <ul class="list-group">
+                <li class="list-group-item" v-for="(item,key) in list">
+                    {{key+1}}.{{item.product}} => 一斤{{item.price}}
+                </li>
+              </ul>
+            <h2>v-for 陣列</h2>
+              <ul class="list-group">
+                  <li class="list-group-item" v-for="(item,key) in list2">
+                      {{key+1}}.{{item}}
+                  </li>
+                </ul>
+        </div>
+        <div class="demo">
+            <h2>5.v-if</h2>
+            <p v-if="ifshow">
+                123
+            </p>
+        </div>
+
+        <div class="demo">
+            <h2>6.v-if+v-for</h2>
+            <template v-for="(item,key) in list">
+                <ul class="list-group">
+                    <li class="list-group-item" v-if="item.price>50">
+                        {{key+1}}.{{item.product}} => 一斤{{item.price}}
+                    </li>
+                </ul>
+            </template>
+            <hr>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link "  href="#" v-on:click.prevent="mylink='蘋果'" :class="{'active':mylink=='蘋果'}">蘋果</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" v-on:click.prevent="mylink='香蕉'" :class="{'active':mylink=='香蕉'}">香蕉</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" v-on:click.prevent="mylink='芭樂'" :class="{'active':mylink=='芭樂'}">芭樂</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="#" v-on:click.prevent="mylink='蓮霧'" :class="{'active':mylink=='蓮霧'}">蓮霧</a>
+                </li>
+              </ul>
+              <hr>
+              <template v-for="(item,key) in list">
+                <ul class="list-group">
+                    <li class="list-group-item" v-if="item.product==mylink">
+                        {{item.city}}{{item.product}} => 一斤{{item.price}}
+                    </li>
+                </ul>
+            </template>
+        </div>
+        
+
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <Script>
+        //物件
+        const App = {
+            data() {
+                return {
+                    text01: '123',
+                    text02: '456',
+                    mytitle01: 'vue教學示範01',
+                    imgSrc:'img/555.jpg',
+                    classw50:'w-50',
+                    imgSrc2:'img/666.jpg',
+                    ifshow:false,
+                    mylink:'肋眼',
+                    list:[
+                        {
+                            product:"蘋果",
+                            price:100,
+                            city:'台中市'
+                        },
+                        {
+                            product:"蘋果",
+                            price:50,
+                            city:'新北市'
+                        },
+                        {
+                            product:"香蕉",
+                            price:70,
+                            city:'嘉義縣'
+                        },
+                        {
+                            product:"香蕉",
+                            price:35,
+                            city:'台中市'
+                        },
+                        {
+                            product:"芭樂",
+                            price:50,
+                            city:'台中市'
+                        },
+                        {
+                            product:"芭樂",
+                            price:50,
+                            city:'新北市'
+                        }, {
+                            product:"芭樂",
+                            price:50,
+                            city:'台南市'
+                        },
+                        {
+                            product:"蓮霧",
+                            price:50,
+                        },
+                        
+                    ],
+                    list2:['牛排','拉麵','丼飯']
+                    
+                }
+            }
+        }
+        //產生物件，掛載至app
+        Vue.createApp(App).mount("#app")
+    </Script>
+</body>
+
+</html>
