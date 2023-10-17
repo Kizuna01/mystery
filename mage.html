@@ -231,7 +231,7 @@
                 const vm = this;
                 //取得商品
                 $.ajax({
-                    url: 'api/product_control_r_api.php',
+                    url: 'https://ms0728707.000webhostapp.com/mystery/api/product_control_r_api.php',
                     type: "post",
                     data: {
                         table: 'mage'
@@ -262,7 +262,7 @@
                 update_product() {
 
                     $.ajax({
-                        url: 'api/product_u_api.php',
+                        url: 'ahttps://ms0728707.000webhostapp.com/mystery/api/product_u_api.php',
                         type: "post",
                         dataType: 'json',
                         data: {
@@ -288,7 +288,7 @@
                 },
                 add_product() {
                     $.ajax({
-                        url: 'api/product_create_api.php',
+                        url: 'https://ms0728707.000webhostapp.com/mystery/api/product_create_api.php',
                         type: "post",
                         dataType: 'json',
                         data: {
@@ -313,7 +313,7 @@
                 del(id, type) {
                     if (confirm("確定刪除" + type + "?")) {
                         $.ajax({
-                            url: 'api/product_d_api.php',
+                            url: 'https://ms0728707.000webhostapp.com/mystery/api/product_d_api.php',
                             type: "post",
                             dataType: 'json',
                             data: {
