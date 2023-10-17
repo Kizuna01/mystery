@@ -65,6 +65,15 @@
                     <option value="衝過披風">衝過披風</option>
                     <option value="衝過手套">衝過手套</option>
                     <option value="衝過盾牌">衝過盾牌</option>
+                    <option value="肩膀">肩膀</option>
+                    <option value="衝過肩膀">衝過肩膀</option>
+                    <option value="龍骨">龍骨</option>
+                    <option value="聖龍">聖龍</option>
+                    <option value="大火杖">大火杖</option>
+                    <option value="大冰杖">大冰杖</option>
+                    <option value="衝過大火杖">衝過大火杖</option>
+                    <option value="衝過大冰杖">衝過大冰杖</option>
+                    <option value="BS法杖(衝過)">BS法杖(衝過)</option>
                 </select>
             </div>
         </div>
@@ -117,6 +126,15 @@
                                 <option value="衝過披風">衝過披風</option>
                                 <option value="衝過手套">衝過手套</option>
                                 <option value="衝過盾牌">衝過盾牌</option>
+                                <option value="肩膀">肩膀</option>
+                                <option value="衝過肩膀">衝過肩膀</option>
+                                <option value="龍骨">龍骨</option>
+                                <option value="聖龍">聖龍</option>
+                                <option value="大火杖">大火杖</option>
+                                <option value="大冰杖">大冰杖</option>
+                                <option value="衝過大火杖">衝過大火杖</option>
+                                <option value="衝過大冰杖">衝過大冰杖</option>
+                                <option value="BS法杖(衝過)">BS法杖(衝過)</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -160,6 +178,15 @@
                                 <option value="衝過披風">衝過披風</option>
                                 <option value="衝過手套">衝過手套</option>
                                 <option value="衝過盾牌">衝過盾牌</option>
+                                <option value="肩膀">肩膀</option>
+                                <option value="衝過肩膀">衝過肩膀</option>
+                                <option value="龍骨">龍骨</option>
+                                <option value="聖龍">聖龍</option>
+                                <option value="大火杖">大火杖</option>
+                                <option value="大冰杖">大冰杖</option>
+                                <option value="衝過大火杖">衝過大火杖</option>
+                                <option value="衝過大冰杖">衝過大冰杖</option>
+                                <option value="BS法杖(衝過)">BS法杖(衝過)</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -204,7 +231,7 @@
                 const vm = this;
                 //取得商品
                 $.ajax({
-                    url: 'https://ms0728707.000webhostapp.com/mystery/api/product_control_r_api.php',
+                    url: 'api/product_control_r_api.php',
                     type: "post",
                     data: {
                         table: 'mage'
@@ -235,7 +262,7 @@
                 update_product() {
 
                     $.ajax({
-                        url: 'https://ms0728707.000webhostapp.com/mystery/api/product_u_api.php',
+                        url: 'api/product_u_api.php',
                         type: "post",
                         dataType: 'json',
                         data: {
@@ -261,7 +288,7 @@
                 },
                 add_product() {
                     $.ajax({
-                        url: 'https://ms0728707.000webhostapp.com/mystery/api/product_create_api.php',
+                        url: 'api/product_create_api.php',
                         type: "post",
                         dataType: 'json',
                         data: {
@@ -286,7 +313,7 @@
                 del(id, type) {
                     if (confirm("確定刪除" + type + "?")) {
                         $.ajax({
-                            url: 'https://ms0728707.000webhostapp.com/mystery/api/product_d_api.php',
+                            url: 'api/product_d_api.php',
                             type: "post",
                             dataType: 'json',
                             data: {
