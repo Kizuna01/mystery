@@ -63,6 +63,12 @@
                     <option value="140披風">140披風</option>
                     <option value="乾淨手套">乾淨手套</option>
                     <option value="衝過手套">衝過手套</option>
+                    <option value="肩膀">肩膀</option>
+                    <option value="衝過肩膀">衝過肩膀</option>
+                    <option value="衝過披風">衝過披風</option>
+                    <option value="衝過鞋子">衝過鞋子</option>
+                    <option value="衝過套服">衝過套服</option>
+                    <option value="衝過頭盔">衝過頭盔</option>
                 </select>
             </div>
         </div>
@@ -117,6 +123,12 @@
                                 <option value="140披風">140披風</option>
                                 <option value="乾淨手套">乾淨手套</option>
                                 <option value="衝過手套">衝過手套</option>
+                                <option value="肩膀">肩膀</option>
+                                <option value="衝過肩膀">衝過肩膀</option>
+                                <option value="衝過披風">衝過披風</option>
+                                <option value="衝過鞋子">衝過鞋子</option>
+                                <option value="衝過套服">衝過套服</option>
+                                <option value="衝過頭盔">衝過頭盔</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -167,6 +179,12 @@
                                 <option value="140披風">140披風</option>
                                 <option value="乾淨手套">乾淨手套</option>
                                 <option value="衝過手套">衝過手套</option>
+                                <option value="肩膀">肩膀</option>
+                                <option value="衝過肩膀">衝過肩膀</option>
+                                <option value="衝過披風">衝過披風</option>
+                                <option value="衝過鞋子">衝過鞋子</option>
+                                <option value="衝過套服">衝過套服</option>
+                                <option value="衝過頭盔">衝過頭盔</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -219,7 +237,7 @@
                 const vm = this;
                 //取得商品
                 $.ajax({
-                    url: 'https://ms0728707.000webhostapp.com/mystery/api/product_control_r_api.php',
+                    url: 'api/product_control_r_api.php',
                     type:"post",
                     data:{
                         table:'hunter'
@@ -252,7 +270,7 @@
                 update_product() {
                     
                     $.ajax({
-                        url: 'https://ms0728707.000webhostapp.com/mystery/api/product_u_api.php',
+                        url: 'api/product_u_api.php',
                         type: "post",
                         dataType: 'json',
                         data: {
@@ -280,7 +298,7 @@
                 },
                 add_product() {
                     $.ajax({
-                        url: 'https://ms0728707.000webhostapp.com/mystery/api/product_create_api.php',
+                        url: 'api/product_create_api.php',
                         type: "post",
                         dataType: 'json',
                         data: {
