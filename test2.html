@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Example</title>
+</head>
+<body>
+    <h1>AJAX Example</h1>
+    <button onclick="loadData()">取得資料</button>
+    <div id="result"></div>
+
+    <script>
+        function loadData() {
+            // 建立 XMLHttpRequest 物件
+            var xhr = new XMLHttpRequest();
+            
+            // 設定請求類型和URL（這裡使用 GET 方法）
+            xhr.open('GET', 'data.json', true);
+            
+            // 定義當收到回應時的處理方式
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // 回應成功，顯示資料
+                    document.getElementById('result').innerHTML = xhr.responseText;
+                } else {
+                    // 錯誤處理
+                    document.getElementById('result').innerHTML = 'Error loading data.';
+                }
+            };
+            
+            // 發送請求
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
