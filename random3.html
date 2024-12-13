@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>讀檔抽籤</title>
+    <style>
+        .aboubtn_title_curr {
+            color: #ffffff;
+            padding: 4px 20px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            border-radius: 1.2rem;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            margin: 3px;
+            background-color: #6aa0b3;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row ">
+            <div class="aboubtn_title_curr">
+                毛絨絨抽獎系統
+            </div>
+        </div>
+        <div class="row">
+            <h3>檔案內容 (僅適用於文字檔案 .txt)</h3>
+            <input type="file" class="form-control" id="fileInput">
+
+        </div>
+        <a class="btn btn-primary mt-3" href="javascript:void(0)" onclick="submit()">送出</a>
+
+
+
+        <div class="row ">
+            <div class="aboubtn_title_curr">
+                毛絨絨會戰簽到名單
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <th>ID</th>
+                <th>次數</th>
+            </thead>
+            <tbody id="fileContent">
+
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-primary mt-3" href="javascript:void(0)" onclick="startFull()">全勤抽獎</a>
+
+                <div class="row ">
+                    <div class="aboubtn_title_curr">
+                        全勤獎抽獎得主
+                    </div>
+                </div>
+                <div id="full"></div>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-primary mt-3" href="javascript:void(0)" onclick="start()">出席抽獎</a>
+                <div class="row ">
+                    <div class="aboubtn_title_curr">
+                        會戰出席抽獎得主
+                    </div>
+                </div>
+                <div id="result"></div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+        });
+        function submit() {
+
+            const fileInput = $('#fileInput')[0].files[0];
+
+            list = []
+            countMap = {};
+            full = []
+
+            const reader = new FileReader();
+            // 當檔案讀取完成後執行
+            reader.onload = function (e) {
+                const content = e.target.result; // 檔案的內容
+                const lines = content.split('\r\n'); // 逐行分割檔案內容
+                $('#fileContent').empty(); // 清空之前的檔案內容
+                lines.forEach(function (line, index) {
+                    list.push(line)
+
+
+                });
+
+                $.each(list, function (index, value) {
+                    countMap[value] = (countMap[value] || 0) + 1;
+                });
+
+                $.each(countMap, function (index, value) {
+
+                    if (value >= 3) {
+                        var txt = '<tr class="table-info"><td>' + index + '</td><<td>' + value + '次</td></tr>'
+                        full.push(index)
+                    } else {
+                        var txt = '<tr><td>' + index + '</td><<td>' + value + '次</td></tr>'
+                    }
+
+                    $('#fileContent').append(txt)
+
+                });
+                //full = full.join('、');
+
+                //$("#full").append(full);
+
+            };
+            // 讀取檔案的內容為文字
+            reader.readAsText(fileInput);
+
+
+
+        }
+
+        var count = 1;
+        var count_full = 1;
+        function random(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function start() {
+            if (list.length == 0) {
+                alert("抽完了")
+                return false
+            }
+            var x = random(0, list.length - 1)
+
+            var txt = count + '.' + list[x] + "<br>"
+            $('#result').append(txt);
+
+            list = list.filter(function (item) {
+                return item !== list[x]
+            });
+            count += 1
+        }
+
+        function startFull() {
+            if (full.length == 0) {
+                alert("抽完了")
+                return false
+            }
+            var x = random(0, full.length - 1)
+
+            var txt = count_full + '.' + full[x] + "<br>"
+            $('#full').append(txt);
+
+            full = full.filter(function (item) {
+                return item !== full[x]
+            });
+            count_full += 1
+        }
+    </script>
+</body>
+
+</html>
